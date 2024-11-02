@@ -1,22 +1,22 @@
 #include <iostream>
 using namespace std;
 
-int n;  // Number of elements to be sorted
+int n; 
 
-// Template for selection sort function
+// Template
 template <class T>
 void selection(T A[], int n) {
     int i, j, min;
     T temp;
 
     for (i = 0; i < n - 1; i++) {
-        min = i;  // Set the current index as the minimum
+        min = i;  
         for (j = i + 1; j < n; j++) {
             if (A[j] < A[min]) {
-                min = j;  // Update min if a smaller element is found
+                min = j;  
             }
         }
-        // Swap the elements
+    
         temp = A[i];
         A[i] = A[min];
         A[min] = temp;
@@ -26,7 +26,6 @@ void selection(T A[], int n) {
 int main() {
     cout << "Selection Sort\n";
 
-    // Sorting integer elements
     cout << "Enter the number of integer elements: ";
     cin >> n;
 
@@ -36,7 +35,6 @@ int main() {
         cin >> A[i];
     }
 
-    // Call selection sort for integer array
     selection(A, n);
 
     cout << "Sorted integer list:\n";
@@ -45,7 +43,6 @@ int main() {
     }
     cout << endl;
 
-    // Sorting float elements
     cout << "Enter the number of float elements: ";
     cin >> n;
 
@@ -54,8 +51,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> B[i];
     }
-
-    // Call selection sort for float array
+    
     selection(B, n);
 
     cout << "Sorted float list:\n";
