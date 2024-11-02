@@ -1,97 +1,123 @@
 #include <iostream>
-#include <cstring> 
-#include <studio.h>
+#include <string>
 using namespace std;
 
 class publication {
     private:
-        String title;
+        string title;
         float price;
-    
-    public :
-    void add() {
-        cout<<"Enter the publication.";
-        cout<<"enter the title of the publication.";
 
-        cin.ignore();
-        getline(cin,title);
-        cout<<"enter the price of the publication.";
+    public:
+        void add() {
+            cout << "Enter the title of the publication: ";
+            cin.ignore();
+            getline(cin, title);
+            cout << "Enter the price of the publication: ";
+            cin >> price;
+        }
 
-        cin>>price;
-    }
-
-    void display() {
-        cout<<"title of the publication :"<<title;
-        cout<<"price of the publication :"<<price;
-    }
+        void display() const {
+            cout << "Title of the publication: " << title << endl;
+            cout << "Price of the publication: $" << price << endl;
+        }
 };
 
-class book :: public publication {
-    private :
-    int page_count;
+class book : public publication {
+    private:
+        int page_count;
 
-    public :
-    void add_book() {
-        add();
-        cout<<"enter the total page of the Book";
-        cin>>page_count;
-    
-    if(page_conut <= 0) {
-        throw page_count;
-        }
-        catch(err) {
-            cout<<"error";            
-        }
-
-    page_count = 0;    
-    }
-
-    void display_book() {
-        display();
-        cout<<"page count";
-        page_count;
-    }
-}
-
-class tape :: public publication {
-    private :
-    float playtime;
     public:
-    void add_tape() {
-        cout<<"enter duration";
-        cin>>play_tape;
-
-        if(playtime <= 0 ){
-            throw playtime;
+        void add_book() {
+            add();
+            cout << "Enter the total pages of the book: ";
+            
+            try {
+                cin >> page_count;
+                if (page_count <= 0) {
+                    throw "Invalid page count!";
+                }
+            } catch (const char* err) {
+                cout << "Error: " << err << endl;
+                page_count = 0;
+            }
         }
-        catch(err) {
-            cout<<err;
+
+        void display_book() const {
+            display();
+            cout << "Page count: " << page_count << endl;
+        }
+};
+
+class tape : public publication {
+    private:
+        float playtime;
+
+    public:
+        void add_tape() {
+            add();
+            cout << "Enter playtime duration (in minutes): ";
+            
+            try {
+                cin >> playtime;
+                if (playtime <= 0) {
+                    throw "Invalid playtime!";
+                }
+            } catch (const char* err) {
+                cout << "Error: " << err << endl;
+                playtime = 0;
+            }
         }
 
-        display();
-    }
-}
-
+        void display_tape() const {
+            display();
+            cout << "Playtime: " << playtime << " minutes" << endl;
+        }
+};
 
 int main() {
-    book b1[10];
-    tape t1[10];
+    book books[10];
+    tape tapes[10];
+    int book_count = 0, tape_count = 0;
+    int choice;
 
-    int ch,b_count = 0, t_count = 0;
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Add Book\n";
+        cout << "2. Add Tape\n";
+        cout << "3. Display Books\n";
+        cout << "4. Display Tapes\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-    cout<<"add info of book";
-    cout<<"add info of tape";
-    cout<<"display info of book";
-    cout<<"dispaly info of tape";
+        switch(choice) {
+            case 1:
+                books[book_count].add_book();
+                book_count++;
+                break;
+            case 2:
+                tapes[tape_count].add_tape();
+                tape_count++;
+                break;
+            case 3:
+                for (int i = 0; i < book_count; i++) {
+                    cout << "\nBook " << (i + 1) << " Details:\n";
+                    books[i].display_book();
+                }
+                break;
+            case 4:
+                for (int i = 0; i < tape_count; i++) {
+                    cout << "\nTape " << (i + 1) << " Details:\n";
+                    tapes[i].display_tape();
+                }
+                break;
+            case 5:
+                cout << "Exiting program.\n";
+                break;
+            default:
+                cout << "Invalid choice! Please try again.\n";
+        }
+    } while (choice != 5);
 
-    b1[b_count].add_book();
-    b_count++;
-
-    t1[b_count].add_tape();
-    t_count++;
-
-    for(int i=0; i<t_count;i++) {
-        t2[j].display();    
-    }
-    
+    return 0;
 }
