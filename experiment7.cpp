@@ -10,7 +10,6 @@ using namespace std;
 int main() {
     map<string, int> statePopulations;
 
-    // Insert state populations into the map
     statePopulations["Delaware"] = 973764;
     statePopulations["Pennsylvania"] = 1280198;
     statePopulations["New Jersey"] = 895801;
