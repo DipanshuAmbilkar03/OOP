@@ -94,10 +94,15 @@ public:
     }
 
     void display() const {
-        cout << "Name: " << name << "\nDOB: " << DOB << "\nBlood Group: " << blood
-            << "\nHeight: " << ht << "\nWeight: " << wt << "\nAddress: " << pai->address
-            << "\nContact: " << pai->contact << "\nLicense: " << pai->license
-            << "\nInsurance: " << pai->insurance << endl;
+        cout << "Name: " << name << endl;
+        cout<< "DOB: " << DOB << endl;
+        cout << "Blood Group: " << blood << endl;
+        cout << "Height: " << ht << endl;
+        cout << "Weight: " << wt << endl;
+        cout << "Address: " << pai->address << endl;
+        cout << "Contact: " << pai->contact << endl;
+        cout<< "License: " << pai->license << endl;
+        cout << "Insurance: " << pai->insurance << endl;
     }
 };
 
