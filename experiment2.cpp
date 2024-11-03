@@ -9,9 +9,9 @@ class additionalPersonData {
 public:
     additionalPersonData() {
         strcpy(address, "pune");
-        strcpy(license, "name@323");
+        strcpy(license, "onyx@007");
         strcpy(insurance, "XW2Tt46gwF");
-        contact = 235362652;
+        contact = 690254069;
     }
 
     ~additionalPersonData() {
@@ -29,7 +29,7 @@ class person {
 
 public:
     person() {
-        strcpy(name, "xyz");
+        strcpy(name, "Onyx");
         strcpy(DOB, "12051991");
         strcpy(blood, "O-");
         ht = 5.4;
