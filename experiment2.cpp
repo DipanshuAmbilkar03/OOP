@@ -18,13 +18,13 @@ public:
         cout << "additionalPersonData's destructor has been called. Everything is deleted.\n";
     }
 
-    friend class person; // Grant `person` class access to private members
+    friend class person; 
 };
 
 class person {
     char name[30], DOB[20], blood[20];
     float ht, wt;
-    static int count; // Static count variable to track the number of instances
+    static int count; 
     additionalPersonData* pai;
 
 public:
@@ -34,8 +34,8 @@ public:
         strcpy(blood, "O-");
         ht = 5.4;
         wt = 60;
-        pai = new additionalPersonData; // Allocate memory for additional data
-        count++; // Increment count on each new object creation
+        pai = new additionalPersonData; 
+        count++; 
     }
 
     person(person* p1) {
@@ -45,13 +45,13 @@ public:
         ht = p1->ht;
         wt = p1->wt;
 
-        pai = new additionalPersonData; // Deep copy of additionalPersonData object
+        pai = new additionalPersonData; 
         strcpy(pai->address, p1->pai->address);
         strcpy(pai->license, p1->pai->license);
         strcpy(pai->insurance, p1->pai->insurance);
         pai->contact = p1->pai->contact;
 
-        count++; // Increment count for the copied object
+        count++; 
     }
 
     static void showcount() {
@@ -93,7 +93,6 @@ public:
         cin.ignore();
     }
 
-    // Inline function to display data
     void display() const {
         cout << "Name: " << name << "\nDOB: " << DOB << "\nBlood Group: " << blood
             << "\nHeight: " << ht << "\nWeight: " << wt << "\nAddress: " << pai->address
@@ -102,12 +101,11 @@ public:
     }
 };
 
-// Initialization of static count variable
 int person::count = 0;
 
 int main() {
-    person* p1 = new person;      // Creating the first person object
-    person* p2 = new person(p1);   // Copy constructor to create a second person based on p1
+    person* p1 = new person;      
+    person* p2 = new person(p1);  
 
     cout << "\nDisplaying default constructor values:\n";
     p1->display();
@@ -120,24 +118,24 @@ int main() {
     cin >> n;
     cin.ignore();
 
-    person* people = new person[n]; // Dynamic array for `n` people
+    person* people = new person[n]; 
     for (int i = 0; i < n; ++i) {
         cout << "\nEnter data for record " << (i + 1) << ":\n";
-        people[i].getData(); // Getting data for each person in the array
+        people[i].getData();
     }
 
     cout << "\nDisplaying all records:\n";
     for (int i = 0; i < n; ++i) {
         cout << "\nRecord " << (i + 1) << ":\n";
-        people[i].display(); // Displaying each person's data
+        people[i].display(); 
     }
 
-    person::showcount(); // Showing count of `person` objects created
+    person::showcount(); 
 
-    // Memory cleanup
-    delete p1; // Delete p1 object
-    delete p2; // Delete p2 object
-    delete[] people; // Delete dynamically allocated array of `person` objects
+    delete p1;
+    delete p2; 
+    // dynamic memory 
+    delete[] people; 
 
     return 0;
 }
