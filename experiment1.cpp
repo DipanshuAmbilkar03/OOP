@@ -16,10 +16,12 @@ class complex {
     float y;  
 
 public:
-    complex() {
-    x = 0;
-    y = 0;
-}
+    complex() : x(0),y(0) {}
+
+    // complex() {
+    //     x = 0;
+    //     y = 0;
+    // }
     complex operator+(const complex& c) const;
     complex operator*(const complex& c) const;
 
