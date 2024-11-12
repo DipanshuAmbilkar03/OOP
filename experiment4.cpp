@@ -16,7 +16,7 @@ int main() {
 
     file << "this is new data in sample.txt file.";
     file.close();
-t
+
     file.open("sample.txt", ios::in);
     if (!file) {
         cout << "File could not be opened for reading!" << endl;
