@@ -22,8 +22,8 @@ public:
     //     x = 0;
     //     y = 0;
     // }
-    complex operator+(const complex& c) const;
-    complex operator*(const complex& c) const;
+    complex operator+(const complex &c) const;
+    complex operator*(const complex &c) const;
 
     friend istream &operator>>(istream &input, complex &t) {
         input>>t.x;
